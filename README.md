@@ -17,3 +17,6 @@ JavaScriptレベル5を修了した方
 * 外部ライブラリを利用したミニゲーム作成を行います
 * 物理エンジンを利用したゲーム作成を行います
 * クラスを利用したJavaScriptのゲームを作成します
+
+![Test Image 6](https://github.com/programmingkids/js-level6/blob/main/assets/images/other/200px-CC-BY-SA_icon.svg.png)
+
