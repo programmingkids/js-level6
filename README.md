@@ -18,5 +18,29 @@ JavaScriptレベル5を修了した方
 * 物理エンジンを利用したゲーム作成を行います
 * クラスを利用したJavaScriptのゲームを作成します
 
-![Test Image 6](https://github.com/programmingkids/js-level6/blob/main/src/assets/images/other/200px-CC-BY-SA_icon.svg.png)
+## ゲーム内で利用しているクイズデータ
+* ゲーム内で利用しているクイズデータは、以下のサイトにおいて、提供されているデータを利用しています
+
+[JAQKET:クイズを題材にした日本語QAデータセット](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/)
+
+* ゲーム内で利用しているクイズデータは、[abc/EQIDEN 実行委員会](http://abc-dive.com/questions/) に帰属します。東北大学において研究目的での再配布許諾を得ています．
+* 開発データは クリエイティブ・コモンズ 表示 - 継承 4.0 国際 ライセンスの下に提供されています。
+
+![画像](https://github.com/programmingkids/js-level6/blob/main/src/assets/images/other/200px-CC-BY-SA_icon.svg.png)
+
+
+## JAQKET:クイズを題材にした日本語QAデータセットでのライセンス
+
+* 学習データに含まれるクイズ問題の著作権は abc/EQIDEN 実行委員会に帰属します．東北大学において研究目的での再配布許諾を得ています．
+* 開発データは クリエイティブ・コモンズ 表示 - 継承 4.0 国際 ライセンスの下に提供されています。
+
+![画像](https://github.com/programmingkids/js-level6/blob/main/src/assets/images/other/200px-CC-BY-SA_icon.svg.png)
+
+* データに関するお問い合わせは <jaqket at googlegroups.com>までお気軽にお寄せください．
+* 本データセットを利用した研究成果を発表される際は，以下の文献を参照いただけますと幸いです.
+鈴木正敏, 鈴木潤, 松田耕史, ⻄田京介, 井之上直也. “JAQKET:クイズを題材にした日本語QAデータセットの構築”. 
+言語処理学会第26回年次大会(NLP2020) 発表論文集
+本データセット構築の一部はJSPS科研費JP19H04162，JP19J13238の助成を受けたものです．
+学習用クイズ問題は，abc/EQIDEN実行委員会より研究目的での利用許可を頂きました．
+また，開発/評価用クイズ問題は，株式会社キュービックおよびクイズ法人カプリティオへ依頼して作成しました．記して感謝いたします
 
