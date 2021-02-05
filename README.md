@@ -18,5 +18,5 @@ JavaScriptレベル5を修了した方
 * 物理エンジンを利用したゲーム作成を行います
 * クラスを利用したJavaScriptのゲームを作成します
 
-![Test Image 6](https://github.com/programmingkids/js-level6/blob/main/assets/images/other/200px-CC-BY-SA_icon.svg.png)
+![Test Image 6](https://github.com/programmingkids/js-level6/blob/main/src/assets/images/other/200px-CC-BY-SA_icon.svg.png)
 
