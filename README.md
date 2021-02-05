@@ -29,4 +29,5 @@ JavaScriptレベル5を修了した方
 ![画像](https://github.com/programmingkids/js-level6/blob/main/src/assets/images/other/200px-CC-BY-SA_icon.svg.png)
 
 * クイズデータのライセンスに関しては、以下のサイトをご確認ください
+
 [JAQKET:クイズを題材にした日本語QAデータセットでのライセンス](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%83%BB%E8%AC%9D%E8%BE%9E)
