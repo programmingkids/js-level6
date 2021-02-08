@@ -13,18 +13,18 @@ class StartScene extends Phaser.Scene {
         const cameraPositionX = this.cameras.main.midPoint.x;
         const cameraPositionY = this.cameras.main.midPoint.y;
         // メッセージを表示
-        this.add.text( cameraPositionX-350, cameraPositionY-300, "クイズモンスター", {
-            font: '100px Open Sans',
+        this.add.text(cameraPositionX-350, cameraPositionY-300, "クイズモンスター", {
+            font: "100px Open Sans",
             fill: "#ff0000",
         });
         // スタート画像を画面中央に表示
-        const startImage = this.add.image(cameraPositionX, cameraPositionY, 'button_start');
+        const startImage = this.add.image(cameraPositionX, cameraPositionY, "button_start");
         // スタート画像サイズの変更
         startImage.setDisplaySize(400, 150);
         startImage.setInteractive({
             useHandCursor: true,
         });
-        startImage.on('pointerdown',function(){
+        startImage.on("pointerdown",function() {
             // スタート画像をクリックするとマップシーンを起動
             // バトルシーンが待機中でない場合、起動して、待機状態にする
             if(!this.scene.isSleeping("BattleScene")) {
@@ -53,9 +53,9 @@ class StartScene extends Phaser.Scene {
             width: 600,
             height: 200,
             background: this.rexUI.add.roundRectangle(0, 0, 600, 200, 0, 0xffffff),
-            text: this.add.text(0,0, "",{
-                font: '14px Open Sans',
-                fill: '#000000',
+            text: this.add.text(0,0, "", {
+                font: "14px Open Sans",
+                fill: "#000000",
                 wordWrap: {
                     width: 600,
                     useAdvancedWrap: true

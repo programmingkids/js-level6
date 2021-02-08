@@ -22,16 +22,16 @@ class Map1Scene extends Phaser.Scene {
         // ランダムエンカウンターのカウント変数
         this.count = 0;
         // シーンが待機状態から復帰した場合に呼び出すメソッドの設定
-        this.events.on('wake', this.onWake, this);
+        this.events.on("wake", this.onWake, this);
         
         // シェイク完了後には、バトルシーンを起動する
-        this.cameras.main.on('camerashakecomplete', function(camera, effect) {
+        this.cameras.main.on("camerashakecomplete", function(camera, effect) {
             // シェイクの状態リセット
             this.cameras.main.resetFX();
             // 現在のシーンを待機状態に設定
-            this.scene.pause('Map1Scene');
+            this.scene.pause("Map1Scene");
             // バトルシーンを待機状態から復帰
-            this.scene.wake('BattleScene', {
+            this.scene.wake("BattleScene", {
                 "from" : "Map1Scene",
                 "player": this.player,
                 "battleWithBoss" : false,
@@ -67,36 +67,36 @@ class Map1Scene extends Phaser.Scene {
         }
     }
     
-    config(data){
+    config(data) {
         this.data = data;
     }
     
     createMap() {
         // JSON形式のマップデータの読み込み Tilemapオブジェクトの作成
-        this.map = this.make.tilemap({key: 'map1'});
+        this.map = this.make.tilemap({key: "map1"});
 
         // タイル画像をマップデータに反映する Tilesetオブジェクトの作成
-        this.tiles = this.map.addTilesetImage('map_tiles1', 'map_tiles1',Config.TILE_WIDTH, Config.TILE_HEIGTH, 0, Config.TILE_SPACING);
+        this.tiles = this.map.addTilesetImage("map_tiles1", "map_tiles1", Config.TILE_WIDTH, Config.TILE_HEIGTH, 0, Config.TILE_SPACING);
         
         const layerWidth = Config.TILE_WIDTH * Config.TILE_SCALE * Config.TILE_COLUMN;
         const layerHeight = Config.TILE_HEIGTH * Config.TILE_SCALE * Config.TILE_COLUMN;
         
         // Groundレイヤー
-        this.groundLayer = this.map.createLayer('Ground', this.tiles, 0, 0);
+        this.groundLayer = this.map.createLayer("Ground", this.tiles, 0, 0);
         this.groundLayer.setDisplaySize(layerWidth, layerHeight);
         
         // Borderレイヤー
-        this.borderLayer = this.map.createLayer('Border', this.tiles, 0, 0);
+        this.borderLayer = this.map.createLayer("Border", this.tiles, 0, 0);
         this.borderLayer.setDisplaySize(layerWidth, layerHeight);
         this.borderLayer.setCollisionByExclusion([-1]);
         
         // Worldレイヤー
-        this.worldLayer = this.map.createLayer('World', this.tiles, 0, 0);
+        this.worldLayer = this.map.createLayer("World", this.tiles, 0, 0);
         this.worldLayer.setDisplaySize(layerWidth, layerHeight);
         this.worldLayer.setCollisionByExclusion([-1]);
         
         // Environmentレイヤー
-        this.environmentleLayer = this.map.createLayer('Environment', this.tiles, 0, 0);
+        this.environmentleLayer = this.map.createLayer("Environment", this.tiles, 0, 0);
         this.environmentleLayer.setDisplaySize(layerWidth, layerHeight);
         
         // ゲームワールドの幅と高さの設定
@@ -106,9 +106,9 @@ class Map1Scene extends Phaser.Scene {
         // カメラの表示サイズの設定をする。マップのサイズがカメラの表示サイズ
         this.cameras.main.setBounds(0, 0, this.physics.world.bounds.width, this.physics.world.bounds.height);
         
-        this.map.findObject('Area', function(object) {
+        this.map.findObject("Area", function(object) {
             // マップ2へ遷移するZONEの作成
-            if(object.name == 'ToMap2Scene') {
+            if(object.name == "ToMap2Scene") {
                 this.zoneToMap2 = new Phaser.GameObjects.Zone(
                     this,
                     object.x * Config.TILE_SCALE,
@@ -123,9 +123,9 @@ class Map1Scene extends Phaser.Scene {
     
     createPlayer() {
         // スタートシーンから移動してきた場合
-        if(this.data.from == 'StartScene') {
+        if(this.data.from == "StartScene") {
             this.map.findObject('Player', function(object) {
-                if (object.name == 'FromStartScene') {
+                if (object.name == "FromStartScene") {
                     PlayerData.x = object.x * Config.TILE_SCALE;
                     PlayerData.y = object.y * Config.TILE_SCALE;
                     // 設定基づいてプレイヤーを作成
@@ -134,9 +134,9 @@ class Map1Scene extends Phaser.Scene {
             }, this);
         }
         // マップ2から移動してきた場合
-        if(this.data.from == 'Map2Scene') {
-            this.map.findObject('Player', function(object) {
-                if (object.name == 'FromMap2Scene') {
+        if(this.data.from == "Map2Scene") {
+            this.map.findObject("Player", function(object) {
+                if (object.name == "FromMap2Scene") {
                     PlayerData.x = object.x * Config.TILE_SCALE;
                     PlayerData.y = object.y * Config.TILE_SCALE;
                     // プレイヤーのHPを引き継ぐ

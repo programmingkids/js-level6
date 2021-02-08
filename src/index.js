@@ -51,6 +51,6 @@ game.scene.add("BattleScene", BattleScene);
 game.scene.start("LoadScene");
 
 // ウィンドウの幅を変更したら、ゲームの幅と高さを変更する
-window.addEventListener('resize', function (event) {
+window.addEventListener("resize", function (event) {
     game.scale.resize(window.innerWidth, window.innerHeight);
 }, false);

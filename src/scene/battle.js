@@ -16,7 +16,7 @@ class BattleScene extends Phaser.Scene {
         // バトル結果の状態を表す変数
         this.status = null;
         // シーンが待機状態から復帰したときの処理
-        this.events.on('wake', this.onWake, this);
+        this.events.on("wake", this.onWake, this);
         // 初回起動時に基本UIだけ描いておく
         this.drawScene();
     }
@@ -37,7 +37,7 @@ class BattleScene extends Phaser.Scene {
         this.drawOnWake();
     }
     
-    config(data){
+    config(data) {
         this.data = data;
     }
     
@@ -67,7 +67,7 @@ class BattleScene extends Phaser.Scene {
 
     drawBackground() {
         // シーン全体の背景色 黒の透過画面
-        this.cameras.main.setBackgroundColor('rgba(0,0,0,150)');
+        this.cameras.main.setBackgroundColor("rgba(0,0,0,150)");
         // 画面中央の灰色の枠を透過画面で表示
         this.add.rectangle(0, 0, 800, 600, 0xf1f1f1, 0.8).setOrigin(0,0);
         // カメラの中心を移動
@@ -83,8 +83,8 @@ class BattleScene extends Phaser.Scene {
             height: 200,
             background: this.rexUI.add.roundRectangle(0, 0, 700, 200, 0, 0xffffff),
             text: this.add.text(0,0, "",{
-                font: '14px Open Sans',
-                fill: '#000000',
+                font: "14px Open Sans",
+                fill: "#000000",
                 wordWrap: {
                     width: 300,
                     useAdvancedWrap: true
@@ -115,19 +115,19 @@ class BattleScene extends Phaser.Scene {
             const height = 50;
             const x = 50 + i * width + i * space + width / 2;
             const y = 475;
-            const button = this.add.image(x, y, 'button_orange');
+            const button = this.add.image(x, y, "button_orange");
             this.answerButtons.push(button);
             button.setDisplaySize(width, height);
-            this.add.text( x - 5 , y - 15, i + 1, {
-                font: '20px Open Sans',
-                fill: '#ffffff'
+            this.add.text(x-5, y-15, i+1, {
+                font: "20px Open Sans",
+                fill: "#ffffff"
             });
             button.setInteractive({
                 useHandCursor: true,
             });
             
-            (function(i, context){
-                button.on('pointerdown',function(){
+            (function(i, context) {
+                button.on("pointerdown", function() {
                     this.disableButton();
                     this.answerQuestion(i);
                 }, context);
@@ -137,32 +137,32 @@ class BattleScene extends Phaser.Scene {
 
     createOtherButton() {
         // 薬草ボタン
-        this.portionButton = this.add.image(150, 550, 'button_green');
+        this.portionButton = this.add.image(150, 550, "button_green");
         this.portionButton.setDisplaySize(230, 50);
-        this.portionText = this.add.text( 130, 540, "薬草", {
-            font: '20px Open Sans',
-            fill: '#ffffff'
+        this.portionText = this.add.text(130, 540, "薬草", {
+            font: "20px Open Sans",
+            fill: "#ffffff"
         });
         this.portionButton.setInteractive({
             useHandCursor: true,
         });
         // 薬草ボタンをクリックすると、薬草を利用して、HPを回復
-        this.portionButton.on('pointerdown',function(){
+        this.portionButton.on("pointerdown", function() {
             this.recovery();
         },this);
         
         // 逃げるボタン
-        this.escapeButton = this.add.image(650, 550, 'button_red');
+        this.escapeButton = this.add.image(650, 550, "button_red");
         this.escapeButton.setDisplaySize(230, 50);
-        this.escapeText = this.add.text( 620, 540, "逃げる", {
-            font: '20px Open Sans',
-            fill: '#ffffff'
+        this.escapeText = this.add.text(620, 540, "逃げる", {
+            font: "20px Open Sans",
+            fill: "#ffffff"
         });
         this.escapeButton.setInteractive({
             useHandCursor: true,
         });
         // 逃げるボタンをクリックすると「逃げる」
-        this.escapeButton.on('pointerdown',function(){
+        this.escapeButton.on("pointerdown", function() {
             this.escape();
         },this);
     }
@@ -178,34 +178,34 @@ class BattleScene extends Phaser.Scene {
             this.playerPortionText.destroy();
         }
         // プレイヤー画像表示
-        this.playerImage = this.add.image( 100, 100, this.data.player.frame.texture);
+        this.playerImage = this.add.image(100, 100, this.data.player.frame.texture);
         this.playerImage.setDisplaySize(100, 100);
         // プレイヤーの名前
-        this.playerNameLabel = this.add.text( 160, 50, "名前：", {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerNameLabel = this.add.text(160, 50, "名前：", {
+            font: "20px Open Sans",
+            fill: "#000"
         });
-        this.playerNameText = this.add.text( 220, 50, this.data.player.name, {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerNameText = this.add.text(220, 50, this.data.player.name, {
+            font: "20px Open Sans",
+            fill: "#000"
         });
         // プレイヤーのHP
-        this.playerHpLabel = this.add.text( 160, 90, "HP：", {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerHpLabel = this.add.text(160, 90, "HP：", {
+            font: "20px Open Sans",
+            fill: "#000"
         });
-        this.playerHpText = this.add.text( 220, 90, this.data.player.hp, {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerHpText = this.add.text(220, 90, this.data.player.hp, {
+            font: "20px Open Sans",
+            fill: "#000"
         });
         // プレイヤーのポーション
-        this.playerPortionLabel = this.add.text( 160, 130, "薬草：", {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerPortionLabel = this.add.text(160, 130, "薬草：", {
+            font: "20px Open Sans",
+            fill: "#000"
         });
-        this.playerPortionText = this.add.text( 220, 130, this.data.player.portion, {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.playerPortionText = this.add.text(220, 130, this.data.player.portion, {
+            font: "20px Open Sans",
+            fill: "#000"
         });
     }
     
@@ -218,26 +218,26 @@ class BattleScene extends Phaser.Scene {
             this.enemyHpText.destroy();
         }
         // 敵の画像
-        this.enemyImage = this.add.image( 400, 100, this.enemy.image);
+        this.enemyImage = this.add.image(400, 100, this.enemy.image);
         this.enemyImage.setDisplaySize(100, 100);
 
         // 敵の名前
-        this.enemyNameLabel = this.add.text( 460, 50, "名前：", {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.enemyNameLabel = this.add.text(460, 50, "名前：", {
+            font: "20px Open Sans",
+            fill: "#000"
         });
-        this.enemyNameText = this.add.text( 520, 50, this.enemy.name, {
-            font: '20px Open Sans',
-            fill: '#000',
+        this.enemyNameText = this.add.text(520, 50, this.enemy.name, {
+            font: "20px Open Sans",
+            fill: "#000"
         });
         // 敵のHP
-        this.enemyHpLabel = this.add.text( 460, 90, "HP：", {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.enemyHpLabel = this.add.text(460, 90, "HP：", {
+            font: "20px Open Sans",
+            fill: "#000"
         });
-        this.enemyHpText = this.add.text( 520, 90, this.enemy.hp, {
-            font: '20px Open Sans',
-            fill: '#000'
+        this.enemyHpText = this.add.text(520, 90, this.enemy.hp, {
+            font: "20px Open Sans",
+            fill: "#000"
         });
     }
     
@@ -282,8 +282,8 @@ class BattleScene extends Phaser.Scene {
             fill = "#ff0000";
         }
         // メッセージを表示
-        this.resultText = this.add.text( 200, 0, text, {
-            font: '400px Open Sans',
+        this.resultText = this.add.text(200, 0, text, {
+            font: "400px Open Sans",
             fill: fill,
         });
         // 1秒後にメッセージ後の処理を実行
@@ -321,7 +321,7 @@ class BattleScene extends Phaser.Scene {
             this.showMessage(message);
             this.showMessage("");
         }
-        // 問題解答後の次の処理を判定
+        // 問題解答後、次の処理を判定
         this.judgeNextTurn();
     }
     
@@ -457,11 +457,11 @@ class BattleScene extends Phaser.Scene {
         // カメラをフェードアウト
         this.cameras.main.fadeOut(500, 0,0,0);
         // フェードアウト完了後にシーンを移動
-        this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
+        this.cameras.main.on("camerafadeoutcomplete", function(camera, effect) {
             // カメラの状態リセット
             this.cameras.main.resetFX();
             // バトルシーンを停止
-            this.scene.sleep('BattleScene');
+            this.scene.sleep("BattleScene");
             // マップシーンに戻る
             this.scene.wake(this.data.from, {
                 "from" : "BattleScene",
