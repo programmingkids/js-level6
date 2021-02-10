@@ -251,78 +251,23 @@ class BattleScene extends Phaser.Scene {
     setQuestion() {
         // クイズに関する情報を作成
         // Quizクラスの作成
-        this.quiz = QuizFactory.create(this);
+        
         
         // クイズの問題文を表示
-        this.showMessage(this.quiz.text);
-        this.showMessage("");
-        this.showMessage("");
+        
         
         // クイズの選択肢を画面に表示
-        this.quiz.answers.forEach((answer, index) => {
-            let a = (index + 1) + " : " + answer;
-            this.showMessage(a);
-        }, this);
+        
     }
     
     answerQuestion(index) {
         // 解答用ボタンをクリックしたときの処理
-        let text = "";
-        let fill = "";
-        this.result = null;
-        if(this.quiz.getAnswer(index)) {
-            // 正解
-            this.result = true;
-            text = "〇";
-            fill = "#0000ff";
-        } else {
-            // 間違い
-            this.result = false;
-            text = "×";
-            fill = "#ff0000";
-        }
-        // メッセージを表示
-        this.resultText = this.add.text(200, 0, text, {
-            font: "400px Open Sans",
-            fill: fill,
-        });
-        // 1秒後にメッセージ後の処理を実行
-        this.time.addEvent({
-            delay: 1000,
-            callback : this.afterAnswer,
-            loop: false,
-            callbackScope: this,
-        });
+        
     }
     
     afterAnswer() {
         // 解答後のメッセージを表示した後の処理
-        // メッセージを作成
-        this.resultText.destroy();
-        let message = "";
-        if(this.result) {
-            // 正解なので敵のHPを減少
-            this.enemy.hp--;
-            this.enemyHpText.setText(this.enemy.hp);
-            message = "正解!";
-            this.showMessage(message);
-            this.showMessage("");
-            message = "敵にダメージを与えた";
-            this.showMessage(message);
-            this.showMessage("");
-        } else {
-            // 間違いなのでプレイヤーのHPを減少
-            this.data.player.hp--;
-            this.playerHpText.setText(this.data.player.hp);
-            message = "残念！間違い…";
-            this.showMessage(message);
-            this.showMessage("");
-            message = "プレイヤーはダメージを受けた";
-            this.showMessage(message);
-            this.showMessage("");
-        }
-        // 問題解答後、次の処理を判定
-        this.judgeNextTurn();
+        
     }
     
     judgeNextTurn() {

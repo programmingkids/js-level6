@@ -77,17 +77,9 @@ class Map3Scene extends Phaser.Scene {
             });
         }
         // ラスボスとのバトルに勝利した場合
-        if(this.battleWithBoss && this.data.status == "win") {
-            // ラスボス画像を削除
-            this.bossEnemy.destroy();
-        }
+        
         // ラスボスとのバトルから逃げた場合
-        if(this.battleWithBoss && this.data.status == "escape") {
-            // プレイヤーを上方に移動
-            this.player.y -= 50;
-            // ラスボスとの対戦フラグを「false」
-            this.battleWithBoss = false;
-        }
+        
     }
     
     config(data) {
@@ -205,9 +197,9 @@ class Map3Scene extends Phaser.Scene {
         // プレイヤーはマップ2へ移動するZONEと衝突
         this.physics.add.overlap(this.player, this.zoneToMap2, this.moveSceneToMap2, null, this);
         // プレイヤーはラスボスと戦闘するZONEと衝突
-        this.physics.add.overlap(this.player, this.zoneBossArea, this.startBossBattle, null, this);
+        
         // プレイヤーは宝箱と衝突
-        this.physics.add.overlap(this.player, this.treasuaBox, this.hitTreasure, null, this);
+        
     }
     
     moveSceneToMap2() {
@@ -220,14 +212,7 @@ class Map3Scene extends Phaser.Scene {
     
     startBossBattle() {
         // ラスボスとの戦闘開始
-        if(!this.battleWithBoss) {
-            // ラスボスとの戦闘フラグを「true」
-            this.battleWithBoss = true;
-            // 物理エンジンを停止
-            this.physics.pause();
-            // シェイクする
-            this.cameras.main.shake(500, 0.1, true);
-        }
+        
     }
     
     gameOver() {
@@ -263,25 +248,12 @@ class Map3Scene extends Phaser.Scene {
             fill: "#ff0000",
         });
         // 2秒後にゲームクリア処理を実行
-        this.time.addEvent({
-            delay: 2000,
-            callback: this.gameClear,
-            loop: false,
-            callbackScope: this,
-        });
+        
     }
     
     gameClear() {
         // ゲームクリア処理
-        // カメラをフェードアウト
-        this.cameras.main.fadeOut(1000, 255,215,0);
-        // フェードアウト完了後
-        this.cameras.main.on("camerafadeoutcomplete", function(camera, effect) {
-            // ゲームクリアシーンへ移動する
-            this.scene.start("GameClearScene",{
-                from : "Map3Scene",
-            });
-        }, this);
+        
     }
 }
 
